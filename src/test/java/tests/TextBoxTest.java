@@ -17,10 +17,10 @@ $("[id=currentAddress]").setValue("firs address 1");
 $("[id=permanentAddress]").setValue("second address 2");
 $("[id=submit]").click();
 
-$("").shouldHave(text("Ruslan Kamin"));
-$("").shouldHave(text("ruslankamin@gmail.ru"));
-$("").shouldHave(text("firs address 1"));
-$("").shouldHave(text("second address 2"));
+$("[id=output] [id=name]").shouldHave(text("Ruslan Kamin"));
+$("[id=output] [id=email]").shouldHave(text("ruslankamin@gmail.ru"));
+$("[id=output] [id=currentAddress]").shouldHave(text("firs address 1"));
+$("[id=output] [id=permanentAddress]").shouldHave(text("second address 2"));
     }
 }
 
