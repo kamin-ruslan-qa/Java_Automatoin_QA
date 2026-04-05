@@ -11,7 +11,6 @@ public class TestBase {
     static  void  beforeAll()
     {
         Configuration.browser = "chrome";
-//        Configuration.browserVersion = "144.0";
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "rager";
