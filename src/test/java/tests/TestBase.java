@@ -14,9 +14,9 @@ public class TestBase {
 //      Configuration.browserVersion= "144.0";
         Configuration.browserSize = "1920x2080";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.baseUrl = "https://qa-guru.github.io";
-//        Configuration.pageLoadStrategy = "eager";
-        //  Configuration.timeout = 10000; // default 4000
+//        Configuration.baseUrl = "https://qa-guru.github.io";
+//      Configuration.pageLoadStrategy = "eager";
+//       Configuration.timeout = 10000; // default 4000
     }
 
     @AfterEach
