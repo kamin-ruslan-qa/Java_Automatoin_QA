@@ -15,6 +15,7 @@ public class PracticeFormRegistTest extends TestBase {
     void registrationFormTest()
     // Полная форма регистрации
     {
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("[id=firstName]").setValue("Ruslan");
@@ -54,6 +55,7 @@ public class PracticeFormRegistTest extends TestBase {
     void onlyRequiredFieldsTest()
     // регистрация с обязательными полями
     {
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("#firstName").setValue("Ruslan");
@@ -72,7 +74,7 @@ public class PracticeFormRegistTest extends TestBase {
     @Test
     void negativeScriptOnTheNameTest() {
         //негативный сценарий 1
-
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("#firstName").setValue("Ruslan");
@@ -84,7 +86,7 @@ public class PracticeFormRegistTest extends TestBase {
     @Test
     void negativeScriptOnTheEmailTest() {
         //негативный сценарий 2
-
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("#firstName").setValue("Ruslan");
@@ -100,7 +102,7 @@ public class PracticeFormRegistTest extends TestBase {
 
     {
         //негативный сценарий 3
-
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("#firstName").setValue("Ruslan");

@@ -9,7 +9,9 @@ import static com.codeborne.selenide.Selenide.open;
 public class TextBoxTest extends TestBase {
 
     @Test
-    void successfulFillFromTest() {
+    void successfulFillFromTest()
+    {
+        useQaGuru();
         open("/one-page-form/text-box.html");
         $("[id=userName]").setValue("Ruslan Kamin");
         $("[id=userEmail]").setValue("ruslankamin@gmail.ru");
@@ -29,6 +31,7 @@ public class TextBoxTest extends TestBase {
 
 void fillingOutTheForm()
     {
+        useQaGuru();
         open("/one-page-form/text-box.html");
         $("#userName").setValue("Ruslan");
         $("#submit").click();
@@ -41,6 +44,7 @@ void fillingOutTheForm()
 
     void negativeEmailTest()
     {
+        useDemoqa();
         open("/text-box");
         $("#userName").setValue("Ruslan");
         $("#userEmail").setValue("ruslankamin.ru");
