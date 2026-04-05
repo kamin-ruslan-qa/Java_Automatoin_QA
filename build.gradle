@@ -1,18 +1,21 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
-
-group = 'ru.kaminruslan'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation (
+            "com.codeborne:selenide:7.15.0",
+            "org.junit.jupiter:junit-jupiter:5.9.3",
+            'org.junit.platform:junit-platform-launcher',
+            'org.slf4j:slf4j-simple:2.0.9')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 test {
