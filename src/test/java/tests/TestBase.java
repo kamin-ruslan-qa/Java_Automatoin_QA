@@ -1,9 +1,7 @@
 package tests;
-
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase
@@ -13,9 +11,6 @@ public class TestBase
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x2080";
 //      Configuration.browserVersion= "144.0";
-    }
-    protected static void setBaseUrl(String url) {
-        Configuration.baseUrl = url;
     }
     protected static void useDemoqa() {
         Configuration.baseUrl = "https://demoqa.com";
