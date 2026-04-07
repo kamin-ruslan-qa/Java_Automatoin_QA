@@ -118,6 +118,7 @@ public class PracticeFormRegistTest extends TestBase {
     void negativeScriptOnTheMobile()
     {
         //негативный сценарий 4
+        useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
         $("#firstName").setValue("Ruslan");
