@@ -26,7 +26,7 @@ public class PracticeFormRegistTest extends TestBase {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--025").click();
+        $(".react-datepicker__day--0" + day).click();
         $("#subjectsInput").setValue(subjects).pressEnter();
         $("#hobbiesWrapper").$(byText(hobbies)).click();
         $("#uploadPicture").uploadFromClasspath(upload);
@@ -34,7 +34,7 @@ public class PracticeFormRegistTest extends TestBase {
         $("#state").click();
         $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText(City)).click();
+        $("#stateCity-wrapper").$(byText(city)).click();
         $("#submit").click();
 
 
@@ -47,7 +47,7 @@ public class PracticeFormRegistTest extends TestBase {
         $("#resultBody").shouldHave(text(hobbies));
         $("#resultBody").shouldHave(text(upload));
         $("#resultBody").shouldHave(text(currentAddress));
-        $("#resultBody").shouldHave(text(state + " " + City));
+        $("#resultBody").shouldHave(text(state + " " + city));
 
     }
 
