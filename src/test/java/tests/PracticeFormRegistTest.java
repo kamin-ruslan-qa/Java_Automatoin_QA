@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-
+import static tests.testdata.TestData.*;
 
 
 public class PracticeFormRegistTest extends TestBase {
@@ -18,36 +18,36 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
-        $("#lastName").setValue("Kamin");
-        $("#userEmail").setValue("ruslan@mail.ru");
-        $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("8927123456");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
+        $("#genterWrapper").$(byText(gender)).click();
+        $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("August");
-        $(".react-datepicker__year-select").selectOption("1994");
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
         $(".react-datepicker__day--025").click();
-        $("#subjectsInput").setValue("History").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("Test.jpg");
-        $("#currentAddress").setValue("Moscow");
+        $("#subjectsInput").setValue(subjects).pressEnter();
+        $("#hobbiesWrapper").$(byText(hobbies)).click();
+        $("#uploadPicture").uploadFromClasspath(upload);
+        $("#currentAddress").setValue(currentAddress);
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Noida")).click();
+        $("#stateCity-wrapper").$(byText(City)).click();
         $("#submit").click();
 
 
-        $("#resultBody").shouldHave(text("Ruslan Kamin"));
-        $("#resultBody").shouldHave(text("ruslan@mail.ru"));
-        $("#resultBody").shouldHave(text("Male"));
-        $("#resultBody").shouldHave(text("8927123456"));
+        $("#resultBody").shouldHave(text(firstName + " " + lastName));
+        $("#resultBody").shouldHave(text(userEmail));
+        $("#resultBody").shouldHave(text(gender));
+        $("#resultBody").shouldHave(text(userNumber));
         $("#resultBody").shouldHave(text("1994-08-25"));
-        $("#resultBody").shouldHave(text("History"));
-        $("#resultBody").shouldHave(text("Sports"));
-        $("#resultBody").shouldHave(text("Test.jpg"));
-        $("#resultBody").shouldHave(text("Moscow"));
-        $("#resultBody").shouldHave(text("NCR Noida"));
+        $("#resultBody").shouldHave(text(subjects));
+        $("#resultBody").shouldHave(text(hobbies));
+        $("#resultBody").shouldHave(text(upload));
+        $("#resultBody").shouldHave(text(currentAddress));
+        $("#resultBody").shouldHave(text(state + " " + City));
 
     }
 
@@ -58,15 +58,15 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
-        $("#lastName").setValue("Kamin");
-        $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("8927123456");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#genterWrapper").$(byText(gender)).click();
+        $("#userNumber").setValue(userNumber);
         $("#submit").click();
 
-        $("#resultBody").shouldHave(text("Ruslan Kamin"));
-        $("#resultBody").shouldHave(text("Male"));
-        $("#resultBody").shouldHave(text("8927123456"));
+        $("#resultBody").shouldHave(text(firstName + " " + lastName));
+        $("#resultBody").shouldHave(text(gender));
+        $("#resultBody").shouldHave(text(userNumber));
 
     }
 
@@ -77,7 +77,7 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
+        $("#firstName").setValue(firstName);
         $("#submit").click();
 
         $("#resultModal").shouldNotBe(visible);
@@ -89,8 +89,8 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
-        $("#lastName").setValue("Kamin");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("#userEmail").setValue("ruslanmailru");
         $("#submit").click();
 
@@ -105,8 +105,8 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
-        $("#lastName").setValue("Kamin");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("#userEmail").setValue("ruslanmail.ru");
         $("#submit").click();
 
@@ -121,9 +121,9 @@ public class PracticeFormRegistTest extends TestBase {
         useQaGuru();
         open("/one-page-form/automation-practice-form.html");
         $("[aria-label='Close']").click();
-        $("#firstName").setValue("Ruslan");
-        $("#lastName").setValue("Kamin");
-        $("#userEmail").setValue("ruslan@mail.ru");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
         $("#userNumber").setValue("8927");
         $("#submit").click();
 

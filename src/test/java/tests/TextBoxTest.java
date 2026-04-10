@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.testdata.TestData.*;
 
 
 public class TextBoxTest extends TestBase {
@@ -13,16 +14,16 @@ public class TextBoxTest extends TestBase {
     {
         useQaGuru();
         open("/one-page-form/text-box.html");
-        $("[id=userName]").setValue("Ruslan Kamin");
-        $("[id=userEmail]").setValue("ruslankamin@gmail.ru");
-        $("[id=currentAddress]").setValue("firs address 1");
-        $("[id=permanentAddress]").setValue("second address 2");
-        $("[id=submit]").click();
+        $("#userName").setValue(userName);
+        $("#userEmail").setValue(userEmail);
+        $("#currentAddress").setValue(currentAddress);
+        $("#permanentAddress").setValue(permanentAddress);
+        $("#submit").click();
 
-        $("[id=output] [id=name]").shouldHave(text("Ruslan Kamin"));
-        $("[id=output] [id=email]").shouldHave(text("ruslankamin@gmail.ru"));
-        $("[id=output] [id=currentAddress]").shouldHave(text("firs address 1"));
-        $("[id=output] [id=permanentAddress]").shouldHave(text("second address 2"));
+        $("[id=output] [id=name]").shouldHave(text(userName));
+        $("[id=output] [id=email]").shouldHave(text(userEmail));
+        $("[id=output] [id=currentAddress]").shouldHave(text(currentAddress));
+        $("[id=output] [id=permanentAddress]").shouldHave(text(permanentAddress));
     }
 
 
@@ -33,10 +34,10 @@ void fillingOutTheForm()
     {
         useQaGuru();
         open("/one-page-form/text-box.html");
-        $("#userName").setValue("Ruslan");
+        $("#userName").setValue(firstName);
         $("#submit").click();
 
-        $("[id=output] [id=name]").shouldHave(text("Ruslan"));
+        $("[id=output] [id=name]").shouldHave(text(firstName));
 
     }
 
@@ -46,7 +47,7 @@ void fillingOutTheForm()
     {
         useDemoqa();
         open("/text-box");
-        $("#userName").setValue("Ruslan");
+        $("#userName").setValue(firstName);
         $("#userEmail").setValue("ruslankamin.ru");
         $("#submit").click();
 
@@ -54,12 +55,3 @@ void fillingOutTheForm()
     }
 
 }
-
-
-
-
-
-
-
-
-
