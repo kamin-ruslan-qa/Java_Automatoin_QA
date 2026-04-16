@@ -23,20 +23,18 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
 //       $("[aria-label='Close']").click()
                 .typeFirstName(firstName)
                 .typeLastName(lastName)
-                .typeEmail(userEmail);
+                .typeEmail(userEmail)
+                .setGender(gender)
+                .typeUserNumber(userNumber)
+                .setDateofBirth(month,day,year)
+                .typeSubjects(subjects)
+                .setHobbies(hobbies)
+                .uploadPicture(upload);
 
-        practiceFormRegistPage.setGender("Male");
 
-        $("#userNumber").setValue(userNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(month);
-        $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--0" + day).click();
-        $("#subjectsInput").setValue(subjects).pressEnter();
-        $("#hobbiesWrapper").$(byText(hobbies)).click();
-        $("#uploadPicture").uploadFromClasspath(upload);
         $("#currentAddress").setValue(currentAddress);
         $("#state").click();
+
         $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText(city)).click();
