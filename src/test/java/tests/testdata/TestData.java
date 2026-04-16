@@ -19,11 +19,4 @@ public class TestData
          permanentAddress = "Samara",
          state = "NCR",
          city = "Noida";
-
-
-
-
-
-
-
 }

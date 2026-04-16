@@ -1,5 +1,6 @@
 package tests;
 import org.junit.jupiter.api.Test;
+import pages.PracticeFormRegistPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -11,17 +12,21 @@ import static tests.testdata.TestData.*;
 
 public class PracticeFormRegistTest extends TestBase {
 
+PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
+
     @Test
     void registrationFormTest()
     // Полная форма регистрации
     {
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").$(byText(gender)).click();
+        practiceFormRegistPage.openPage()
+//       $("[aria-label='Close']").click()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeEmail(userEmail);
+
+        practiceFormRegistPage.setGender("Male");
+
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);

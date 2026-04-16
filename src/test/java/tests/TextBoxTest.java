@@ -1,31 +1,33 @@
 package tests;
 import org.junit.jupiter.api.Test;
+import pages.TextBoxPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static tests.testdata.TestData.*;
 
-
 public class TextBoxTest extends TestBase {
 
+    TextBoxPage textBoxPage = new TextBoxPage();
     @Test
     void successfulFillFromTest()
     {
         useQaGuru();
-        open("/one-page-form/text-box.html");
-        $("#userName").setValue(userName);
-        $("#userEmail").setValue(userEmail);
-        $("#currentAddress").setValue(currentAddress);
-        $("#permanentAddress").setValue(permanentAddress);
-        $("#submit").click();
+        textBoxPage.openPage()
+                .typeUserName(userName)
+                .typeUserEmail(userEmail)
+                .typeCurrentAddressInput(currentAddress)
+                .typePermanentAddressInput(permanentAddress)
+                .submitForm();
 
-        $("[id=output] [id=name]").shouldHave(text(userName));
-        $("[id=output] [id=email]").shouldHave(text(userEmail));
-        $("[id=output] [id=currentAddress]").shouldHave(text(currentAddress));
-        $("[id=output] [id=permanentAddress]").shouldHave(text(permanentAddress));
+
+        textBoxPage.checkField("name", userName)
+                .checkField("email", userEmail)
+                .checkField("currentAddress", currentAddress)
+                .checkField("permanentAddress", permanentAddress);
+
     }
-
 
 
     @Test
@@ -33,11 +35,11 @@ public class TextBoxTest extends TestBase {
 void fillingOutTheForm()
     {
         useQaGuru();
-        open("/one-page-form/text-box.html");
-        $("#userName").setValue(firstName);
-        $("#submit").click();
+        textBoxPage.openPage()
+                .typeUserName(firstName)
+                .submitForm();
 
-        $("[id=output] [id=name]").shouldHave(text(firstName));
+        textBoxPage.checkField("name", firstName);
 
     }
 
