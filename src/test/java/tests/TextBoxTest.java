@@ -1,6 +1,7 @@
 package tests;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
+import pages.components.FinalComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -10,6 +11,8 @@ import static tests.testdata.TestData.*;
 public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
+    FinalComponent finalComponent = new FinalComponent();
+
     @Test
     void successfulFillFromTest()
     {
@@ -29,7 +32,6 @@ public class TextBoxTest extends TestBase {
 
     }
 
-
     @Test
 
 void fillingOutTheForm()
@@ -47,13 +49,13 @@ void fillingOutTheForm()
 
     void negativeEmailTest()
     {
-        useDemoqa();
-        open("/text-box");
-        $("#userName").setValue(firstName);
-        $("#userEmail").setValue("ruslankamin.ru");
-        $("#submit").click();
+        useQaGuru();
+        textBoxPage.openPage()
+                .typeUserName(firstName)
+                .typeUserEmail(inCorrectEmail)
+                .submitForm();
 
-        $(".field-error").shouldHave(visible);
+        finalComponent.fieldErrorShouldBeVisible();
     }
 
 }

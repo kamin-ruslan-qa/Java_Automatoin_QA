@@ -12,9 +12,7 @@ public class TestBase
         Configuration.browserSize = "1920x2080";
 //      Configuration.browserVersion= "144.0";
     }
-    protected static void useDemoqa() {
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+
     protected static void useQaGuru() {
         Configuration.baseUrl = "https://qa-guru.github.io";
     }

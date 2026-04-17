@@ -1,18 +1,14 @@
 package tests;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormRegistPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import pages.components.FinalComponent;
 import static tests.testdata.TestData.*;
 
 
 public class PracticeFormRegistTest extends TestBase {
 
 PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
+FinalComponent finalComponent = new FinalComponent();
 
     @Test
     void registrationFormTest()
@@ -20,37 +16,32 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
     {
         useQaGuru();
         practiceFormRegistPage.openPage()
-//       $("[aria-label='Close']").click()
+                .closeBanner()
                 .typeFirstName(firstName)
                 .typeLastName(lastName)
                 .typeEmail(userEmail)
                 .setGender(gender)
                 .typeUserNumber(userNumber)
-                .setDateofBirth(month,day,year)
+                .setDateOfBirth(day,month,year)
                 .typeSubjects(subjects)
                 .setHobbies(hobbies)
-                .uploadPicture(upload);
+                .uploadPicture(upload)
+                .typecurrentAddress(currentAddress)
+                .setStateAndCity(state, city)
+                .submitForm();
 
 
-        $("#currentAddress").setValue(currentAddress);
-        $("#state").click();
 
-        $("#stateCity-wrapper").$(byText(state)).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText(city)).click();
-        $("#submit").click();
-
-
-        $("#resultBody").shouldHave(text(firstName + " " + lastName));
-        $("#resultBody").shouldHave(text(userEmail));
-        $("#resultBody").shouldHave(text(gender));
-        $("#resultBody").shouldHave(text(userNumber));
-        $("#resultBody").shouldHave(text("1994-08-25"));
-        $("#resultBody").shouldHave(text(subjects));
-        $("#resultBody").shouldHave(text(hobbies));
-        $("#resultBody").shouldHave(text(upload));
-        $("#resultBody").shouldHave(text(currentAddress));
-        $("#resultBody").shouldHave(text(state + " " + city));
+        finalComponent.chekResult("Student Name", firstName + " " + lastName)
+                .chekResult("Student Email", userEmail)
+                .chekResult("Gender", gender)
+                .chekResult("Mobile", userNumber)
+                .chekResult("Date of Birth", dateOfBirth)
+                .chekResult("Subjects", subjects)
+                .chekResult("Hobbies", hobbies)
+                .chekResult("Picture", upload)
+                .chekResult("Address", currentAddress)
+                .chekResult("State and City", state + " " + city);
 
     }
 
@@ -59,17 +50,17 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
     // регистрация с обязательными полями
     {
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#genterWrapper").$(byText(gender)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        practiceFormRegistPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .setGender(gender)
+                .typeUserNumber(userNumber)
+                .submitForm();
 
-        $("#resultBody").shouldHave(text(firstName + " " + lastName));
-        $("#resultBody").shouldHave(text(gender));
-        $("#resultBody").shouldHave(text(userNumber));
+        finalComponent.chekResult("Student Name", firstName + " " + lastName)
+                .chekResult("Gender", gender)
+                .chekResult("Mobile", userNumber);
 
     }
 
@@ -78,26 +69,26 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
     void negativeScriptOnTheNameTest() {
         //негативный сценарий 1
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#submit").click();
+        practiceFormRegistPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .submitForm();
 
-        $("#resultModal").shouldNotBe(visible);
+        finalComponent.modalShouldNotBeVisible();
     }
 
     @Test
     void negativeScriptOnTheEmailTest() {
         //негативный сценарий 2
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("ruslanmailru");
-        $("#submit").click();
+        practiceFormRegistPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeEmail(inCorrectEmail)
+                .submitForm();
 
-        $("#resultModal").shouldNotBe(visible);
+        finalComponent.modalShouldNotBeVisible();
     }
 
     @Test
@@ -106,14 +97,14 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
     {
         //негативный сценарий 3
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("ruslanmail.ru");
-        $("#submit").click();
+        practiceFormRegistPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeEmail(inCorrectEmail)
+                .submitForm();
 
-        $("#resultModal").shouldNotBe(visible);
+        finalComponent.modalShouldNotBeVisible();
     }
 
 
@@ -122,14 +113,14 @@ PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
     {
         //негативный сценарий 4
         useQaGuru();
-        open("/one-page-form/automation-practice-form.html");
-        $("[aria-label='Close']").click();
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $("#userNumber").setValue("8927");
-        $("#submit").click();
+        practiceFormRegistPage.openPage()
+                .closeBanner()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeEmail(userEmail)
+                .typeUserNumber(incorrectPhoneNumber)
+                .submitForm();
 
-        $("#resultModal").shouldNotBe(visible);
+        finalComponent.modalShouldNotBeVisible();
     }
 }

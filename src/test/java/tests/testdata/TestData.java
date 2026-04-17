@@ -18,5 +18,8 @@ public class TestData
          currentAddress = "Moscow",
          permanentAddress = "Samara",
          state = "NCR",
-         city = "Noida";
+         city = "Noida",
+         dateOfBirth = "1994-08-25",
+         inCorrectEmail = "ruslankamin.ru",
+         incorrectPhoneNumber = "123123";
 }

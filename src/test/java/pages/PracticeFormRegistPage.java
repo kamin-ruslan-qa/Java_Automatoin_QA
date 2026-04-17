@@ -6,27 +6,41 @@ import pages.components.CalendarComponent;
 import java.util.Calendar;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static tests.testdata.TestData.gender;
+import static tests.testdata.TestData.state;
 
 public class PracticeFormRegistPage {
     CalendarComponent calendar = new CalendarComponent();
 
-    private SelenideElement firstNameInput = $("#firstName");
-    private SelenideElement lastNameInput = $("#lastName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement genderContainer = $("#genterWrapper");
-    private SelenideElement userNumberInput = $("#userNumber");
-    private SelenideElement subjectsInput = $("#subjectsInput");
-    private SelenideElement hobbiesWrapper = $("#hobbiesWrapper");
-    private SelenideElement uploadPictureInput = $("#uploadPicture");
 
+    private final SelenideElement firstNameInput = $("#firstName");
+    private final SelenideElement lastNameInput = $("#lastName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement genderContainer = $("#genterWrapper");
+    private final SelenideElement userNumberInput = $("#userNumber");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement hobbiesWrapper = $("#hobbiesWrapper");
+    private final SelenideElement uploadPictureInput = $("#uploadPicture");
+    private final SelenideElement currentAddress = $("#currentAddress");
+    private final SelenideElement stateSelect = $("#state");
+    private final SelenideElement citySelect = $("#city");
+    private final SelenideElement stateCityContainer = $("#stateCity-wrapper");
+    private final SelenideElement submitButton = $("#submit");
 
     public PracticeFormRegistPage openPage() {
         open("/one-page-form/automation-practice-form.html");
 
         return this;
+    }
+    public PracticeFormRegistPage closeBanner(){
+            executeJavaScript("""
+            document.getElementById('fixedban')?.remove();
+            document.querySelector('footer')?.remove();
+            document.querySelector('.banner')?.remove();
+            document.querySelector('[class*="banner"]')?.remove();
+            """);
+            return this;
     }
 
     public PracticeFormRegistPage typeFirstName(String value) {
@@ -59,7 +73,7 @@ public class PracticeFormRegistPage {
         return this;
     }
 
-    public PracticeFormRegistPage setDateofBirth(String month, String day, String year) {
+    public PracticeFormRegistPage setDateOfBirth(String day, String month, String year) {
         $("#dateOfBirthInput").click();
         calendar.setDate(day, month, year);
 
@@ -83,9 +97,39 @@ public class PracticeFormRegistPage {
 
         return this;
     }
+
+    public PracticeFormRegistPage typecurrentAddress(String value) {
+        currentAddress.setValue(value);
+
+        return this;
+    }
+
+    public PracticeFormRegistPage setState(String value) {
+        stateSelect.click();
+        stateCityContainer.$(byText(value)).click();
+        return this;
+    }
+
+    public PracticeFormRegistPage setCity(String value) {
+        citySelect.click();
+        stateCityContainer.$(byText(value)).click();
+        return this;
+    }
+
+    public PracticeFormRegistPage setStateAndCity(String state, String city) {
+        setState(state);
+        setCity(city);
+        return this;
+    }
+
+    public PracticeFormRegistPage submitForm() {
+        submitButton.click();
+        return this;
+    }
+
 }
 
-//    public PracticeFormRegistPage submitForm(){
+
 //
 //    }
 //    public PracticeFormRegistPage checkField (){
