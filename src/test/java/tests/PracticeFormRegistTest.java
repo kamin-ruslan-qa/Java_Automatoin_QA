@@ -2,7 +2,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormRegistPage;
 import pages.components.FinalComponent;
-import static tests.testdata.TestData.*;
+import tests.testdata.TestData;
 
 
 public class PracticeFormRegistTest extends TestBase {
@@ -10,6 +10,7 @@ public class PracticeFormRegistTest extends TestBase {
 
 PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
 FinalComponent finalComponent = new FinalComponent();
+TestData testData = new TestData();
 
     @Test
     void registrationFormTest()
@@ -18,31 +19,31 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(userEmail)
-                .setGender(gender)
-                .typeUserNumber(userNumber)
-                .setDateOfBirth(day,month,year)
-                .typeSubjects(subjects)
-                .setHobbies(hobbies)
-                .uploadPicture(upload)
-                .typecurrentAddress(currentAddress)
-                .setStateAndCity(state, city)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeEmail(testData.userEmail)
+                .setGender(testData.gender)
+                .typeUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.day,testData.month,testData.year)
+                .typeSubjects(testData.subjects)
+                .setHobbies(testData.hobbies)
+                .uploadPicture(testData.upload)
+                .typecurrentAddress(testData.currentAddress)
+                .setStateAndCity(testData.state, testData.city)
                 .submitForm();
 
 
 
-        finalComponent.chekResult("Student Name", firstName + " " + lastName)
-                .chekResult("Student Email", userEmail)
-                .chekResult("Gender", gender)
-                .chekResult("Mobile", userNumber)
-                .chekResult("Date of Birth", dateOfBirth)
-                .chekResult("Subjects", subjects)
-                .chekResult("Hobbies", hobbies)
-                .chekResult("Picture", upload)
-                .chekResult("Address", currentAddress)
-                .chekResult("State and City", state + " " + city);
+        finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
+                .chekResult("Student Email", testData.userEmail)
+                .chekResult("Gender", testData.gender)
+                .chekResult("Mobile", testData.userNumber)
+                .chekResult("Date of Birth", testData.dateOfBirth)
+                .chekResult("Subjects", testData.subjects)
+                .chekResult("Hobbies", testData.hobbies)
+                .chekResult("Picture", testData.upload)
+                .chekResult("Address", testData.currentAddress)
+                .chekResult("State and City", testData.state + " " + testData.city);
 
     }
 
@@ -53,15 +54,15 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .setGender(gender)
-                .typeUserNumber(userNumber)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .setGender(testData.gender)
+                .typeUserNumber(testData.userNumber)
                 .submitForm();
 
-        finalComponent.chekResult("Student Name", firstName + " " + lastName)
-                .chekResult("Gender", gender)
-                .chekResult("Mobile", userNumber);
+        finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
+                .chekResult("Gender", testData.gender)
+                .chekResult("Mobile", testData.userNumber);
 
     }
 
@@ -72,7 +73,7 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
+                .typeFirstName(testData.firstName)
                 .submitForm();
 
         finalComponent.modalShouldNotBeVisible();
@@ -84,9 +85,9 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(inCorrectEmail)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeEmail(testData.inCorrectEmail)
                 .submitForm();
 
         finalComponent.modalShouldNotBeVisible();
@@ -100,9 +101,9 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(inCorrectEmail)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeEmail(testData.inCorrectEmail)
                 .submitForm();
 
         finalComponent.modalShouldNotBeVisible();
@@ -116,10 +117,10 @@ FinalComponent finalComponent = new FinalComponent();
         useQaGuru();
         practiceFormRegistPage.openPage()
                 .closeBanner()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(userEmail)
-                .typeUserNumber(incorrectPhoneNumber)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeEmail(testData.userEmail)
+                .typeUserNumber(testData.incorrectPhoneNumber)
                 .submitForm();
 
         finalComponent.modalShouldNotBeVisible();

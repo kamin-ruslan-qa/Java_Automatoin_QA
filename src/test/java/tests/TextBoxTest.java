@@ -2,6 +2,7 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 import pages.components.FinalComponent;
+import tests.testdata.TestData;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -12,23 +13,24 @@ public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
     FinalComponent finalComponent = new FinalComponent();
+    TestData testData = new TestData();
 
     @Test
     void successfulFillFromTest()
     {
         useQaGuru();
         textBoxPage.openPage()
-                .typeUserName(userName)
-                .typeUserEmail(userEmail)
-                .typeCurrentAddressInput(currentAddress)
-                .typePermanentAddressInput(permanentAddress)
+                .typeUserName(testData.userName)
+                .typeUserEmail(testData.userEmail)
+                .typeCurrentAddressInput(testData.currentAddress)
+                .typePermanentAddressInput(testData.permanentAddress)
                 .submitForm();
 
 
-        textBoxPage.checkField("name", userName)
-                .checkField("email", userEmail)
-                .checkField("currentAddress", currentAddress)
-                .checkField("permanentAddress", permanentAddress);
+        textBoxPage.checkField("name", testData.userName)
+                .checkField("email", testData.userEmail)
+                .checkField("currentAddress", testData.currentAddress)
+                .checkField("permanentAddress", testData.permanentAddress);
 
     }
 
@@ -38,10 +40,10 @@ void fillingOutTheForm()
     {
         useQaGuru();
         textBoxPage.openPage()
-                .typeUserName(firstName)
+                .typeUserName(testData.firstName)
                 .submitForm();
 
-        textBoxPage.checkField("name", firstName);
+        textBoxPage.checkField("name", testData.firstName);
 
     }
 
@@ -51,8 +53,8 @@ void fillingOutTheForm()
     {
         useQaGuru();
         textBoxPage.openPage()
-                .typeUserName(firstName)
-                .typeUserEmail(inCorrectEmail)
+                .typeUserName(testData.firstName)
+                .typeUserEmail(testData.inCorrectEmail)
                 .submitForm();
 
         finalComponent.fieldErrorShouldBeVisible();

@@ -9,7 +9,7 @@ import static java.lang.String.format;
 
 public class RandomUtils {
 
-    private static final Faker faker = new Faker();
+    private final  Faker faker = new Faker();
 
     public static void main(String[] args) {
         System.out.println(getRandomString(8));
@@ -86,16 +86,15 @@ public class RandomUtils {
         return stringArray[randomIndex];
     }
 
-    public static String getRandomCity(String userState) {
-        return switch (userState) {
+    public String getRandomCity(String State) {
+        return switch (State) {
             case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
             case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
             case "Haryana" -> faker.options().option("Karnal", "Panipat");
             case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
-            default -> userState;
+            default -> "Delhi";
         };
     }
-
         public static int getMonthNumber(String monthName) {
             return switch (monthName) {
                 case "January" -> 1;
