@@ -9,6 +9,7 @@ repositories {
 dependencies {
     testImplementation (
             "com.codeborne:selenide:7.15.0",
+            'net.datafaker:datafaker:2.5.4',
             "org.junit.jupiter:junit-jupiter:5.9.3",
             'org.junit.platform:junit-platform-launcher',
             'org.slf4j:slf4j-simple:2.0.9')

@@ -2,13 +2,9 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-
-import java.util.Calendar;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static tests.testdata.TestData.gender;
-import static tests.testdata.TestData.state;
+
 
 public class PracticeFormRegistPage {
     CalendarComponent calendar = new CalendarComponent();
@@ -128,11 +124,3 @@ public class PracticeFormRegistPage {
     }
 
 }
-
-
-//
-//    }
-//    public PracticeFormRegistPage checkField (){
-//
-//    }
-//}

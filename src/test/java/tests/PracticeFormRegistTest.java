@@ -7,6 +7,7 @@ import static tests.testdata.TestData.*;
 
 public class PracticeFormRegistTest extends TestBase {
 
+
 PracticeFormRegistPage practiceFormRegistPage = new PracticeFormRegistPage();
 FinalComponent finalComponent = new FinalComponent();
 
