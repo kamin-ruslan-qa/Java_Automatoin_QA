@@ -41,7 +41,7 @@ public class BookStoreTests {
     })
     @ParameterizedTest(name = "При поиске товара {0} в заголовке результатов поиска должно быть название {1}")
     @Tag("BLOCKER")
-    void testSearchByAuthor(String searchProduct , String expectedDescription) {
+    void searchResultsMustContainTheTitle(String searchProduct , String expectedDescription) {
         $(".confirm-city-popup__close-button").click();
         $("input[type='search']").setValue(searchProduct).pressEnter();
         $("h1").shouldHave(text(expectedDescription));

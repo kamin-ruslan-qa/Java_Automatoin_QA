@@ -1,15 +1,22 @@
 package utils;
 
 import net.datafaker.Faker;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.zip.ZipInputStream;
 
 import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class RandomUtils {
 
-    private final  Faker faker = new Faker();
+    private final Faker faker = new Faker();
 
     public static void main(String[] args) {
         System.out.println(getRandomString(8));
@@ -95,21 +102,22 @@ public class RandomUtils {
             default -> "Delhi";
         };
     }
-        public static int getMonthNumber(String monthName) {
-            return switch (monthName) {
-                case "January" -> 1;
-                case "February" -> 2;
-                case "March" -> 3;
-                case "April" -> 4;
-                case "May" -> 5;
-                case "June" -> 6;
-                case "July" -> 7;
-                case "August" -> 8;
-                case "September" -> 9;
-                case "October" -> 10;
-                case "November" -> 11;
-                case "December" -> 12;
-                default -> 1;
-            };
-        }
+
+    public static int getMonthNumber(String monthName) {
+        return switch (monthName) {
+            case "January" -> 1;
+            case "February" -> 2;
+            case "March" -> 3;
+            case "April" -> 4;
+            case "May" -> 5;
+            case "June" -> 6;
+            case "July" -> 7;
+            case "August" -> 8;
+            case "September" -> 9;
+            case "October" -> 10;
+            case "November" -> 11;
+            case "December" -> 12;
+            default -> 1;
+        };
     }
+}

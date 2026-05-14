@@ -4,11 +4,6 @@ import pages.TextBoxPage;
 import pages.components.FinalComponent;
 import tests.testdata.TestData;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static tests.testdata.TestData.*;
-
 public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();

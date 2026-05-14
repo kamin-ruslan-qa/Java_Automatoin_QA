@@ -32,8 +32,6 @@ TestData testData = new TestData();
                 .setStateAndCity(testData.state, testData.city)
                 .submitForm();
 
-
-
         finalComponent.chekResult("Student Name", testData.firstName + " " + testData.lastName)
                 .chekResult("Student Email", testData.userEmail)
                 .chekResult("Gender", testData.gender)
@@ -46,7 +44,6 @@ TestData testData = new TestData();
                 .chekResult("State and City", testData.state + " " + testData.city);
 
     }
-
     @Test
     void onlyRequiredFieldsTest()
     // регистрация с обязательными полями
@@ -65,8 +62,6 @@ TestData testData = new TestData();
                 .chekResult("Mobile", testData.userNumber);
 
     }
-
-
     @Test
     void negativeScriptOnTheNameTest() {
         //негативный сценарий 1
