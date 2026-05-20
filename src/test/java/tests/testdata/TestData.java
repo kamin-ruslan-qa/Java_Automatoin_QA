@@ -7,8 +7,11 @@ import static utils.RandomUtils.getMonthNumber;
 
 public class TestData
 {
+
  private final Faker faker = new Faker();
  private final RandomUtils randomUtils = new RandomUtils();
+ public String repository = "kamin-ruslan-qa/Java_Automatoin_QA";
+ public String url = "https://github.com";
 
        public final String firstName = faker.name().firstName();
        public final String lastName = faker.name().lastName();
@@ -29,4 +32,5 @@ public class TestData
        public final String dateOfBirth = String.format("%s-%02d-%02d", year, getMonthNumber(month), Integer.parseInt(day));
        public final String inCorrectEmail = firstName.toLowerCase() + "." + lastName.toLowerCase() + "ru";
        public final String incorrectPhoneNumber = faker.phoneNumber().subscriberNumber(8);
+       public String issueName;
 }
